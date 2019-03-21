@@ -1,0 +1,25 @@
+.mybkg{
+	background: linear-gradient(0deg,rgba(25, 24, 24, 0.25),rgba(23, 22, 22, 0.6)) ,url(./images/bkg.jpg);
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.blank_space{
+	height: 300px;
+}
+
+body{
+	background-color: #000000e0;
+}
+
+*{
+	font-family: 'Montserrat', sans-serif;
+	color: #ffffff !important;
+}
+
+.profileImg{
+	object-fit: scale-down;
+}
+.p-5{
+	background: #8080801c;
+}
