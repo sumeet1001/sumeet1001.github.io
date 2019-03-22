@@ -44,6 +44,12 @@ body{
 	font-size: 17px;
 }
 
+.navbar a{
+	background: #00000040;
+    padding: 10px;
+    border-radius: 8px;
+    margin-right: 3px;
+}
 @media (max-width: 530px){
 	.aboutme{
 		margin-top: 20px; 
