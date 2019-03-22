@@ -1,5 +1,5 @@
 .mybkg{
-	background: linear-gradient(0deg,rgba(25, 24, 24, 0.25),rgba(23, 22, 22, 0.6)) ,url('./images/bkg.jpg');
+	background: linear-gradient(0deg,rgba(25, 24, 24, 0.48),rgba(23, 22, 22, 0.6)) ,url('./images/bkg.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
