@@ -1,5 +1,5 @@
 .mybkg{
-	background: linear-gradient(0deg,rgba(25, 24, 24, 0.48),rgba(23, 22, 22, 0.6)) ,url('./images/bkg.jpg');
+	background: linear-gradient(0deg,rgba(25, 24, 24, 0.48),rgba(23, 22, 22, 0.6)) ,url("https://firebasestorage.googleapis.com/v0/b/blog-project-sumeet.appspot.com/o/bkg.jpg?alt=media&token=5b2a835d-0d72-410e-ae01-54a6cd96819c");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
