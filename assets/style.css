@@ -8,6 +8,20 @@
 	height: 300px;
 }
 
+.customCard{
+	border-radius: 7px;
+    background: #726d6d;
+    border: 1px solid gray;
+    padding: 10px;
+}
+.customCard img{
+	margin: 10px 0px;
+}
+/*
+#proj .col-sm-4 {
+	max-width: 32%;
+	margin: 5px;
+}*/
 body{
 	background-color: #000000e0;
 }
@@ -50,8 +64,22 @@ body{
     border-radius: 8px;
     margin-right: 3px;
 }
-@media (max-width: 530px){
+
+.custom-toggler.navbar-toggler {
+    border-color: #ffffff;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 960px){
 	.aboutme{
 		margin-top: 20px; 
 	}
+	.navbar a{
+		margin: 10px 0px;
+		padding-left: 10px !important;
+	}
+
 }
