@@ -1,6 +1,6 @@
 var app = angular.module('aboutme', []);
 
-app.controller('homepage', ['$scope','$http','$anchorScroll', '$location', function ($scope, $http,$anchorScroll,
+app.controller('homepage', ['$scope','$window','$anchorScroll', '$location', function ($scope, $window,$anchorScroll,
 $location) {
 	window.scope = $scope;
 	scope.projectDiv = false;
@@ -37,5 +37,10 @@ $location) {
 			$anchorScroll();
 		}
 	}
+
+	scope.goUp = function(){
+		console.log("top")
+		$window.scrollTo(0, 0);
+		}
 
 }])
