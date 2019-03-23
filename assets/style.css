@@ -1,5 +1,5 @@
 .mybkg{
-	background: linear-gradient(0deg,rgba(25, 24, 24, 0.25),rgba(23, 22, 22, 0.6)) ,url('./images/bkg.jpg');
+	background: linear-gradient(0deg,rgba(25, 24, 24, 0.48),rgba(23, 22, 22, 0.6)) ,url("https://firebasestorage.googleapis.com/v0/b/blog-project-sumeet.appspot.com/o/bkg.jpg?alt=media&token=5b2a835d-0d72-410e-ae01-54a6cd96819c");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -8,6 +8,30 @@
 	height: 300px;
 }
 
+.customCard{
+	border-radius: 7px;
+    background: #726d6d;
+    border: 1px solid gray;
+    padding: 10px;
+}
+.customCard img{
+	margin: 10px 0px;
+}
+.upcontainer img {
+    padding: 2px;
+    width: 50px;
+    float: right;
+    position: relative;
+    right: 16px;
+    background: white;
+    border-radius: 24px;
+}
+.upcontainer {
+    bottom: 20px;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
 body{
 	background-color: #000000e0;
 }
@@ -44,8 +68,28 @@ body{
 	font-size: 17px;
 }
 
-@media (max-width: 530px){
+.navbar a{
+	background: #00000040;
+    padding: 10px;
+    border-radius: 8px;
+    margin-right: 3px;
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: #ffffff;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 960px){
 	.aboutme{
 		margin-top: 20px; 
 	}
+	.navbar a{
+		margin: 10px 0px;
+		padding-left: 10px !important;
+	}
+
 }
