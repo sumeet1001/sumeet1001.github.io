@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="./assets/style.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   
-<link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/blog-project-sumeet.appspot.com/o/icon.jpg?alt=media&token=307bf2ab-41ac-47af-a2c7-275e026f7de2"/>
+  <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/blog-project-sumeet.appspot.com/o/icon.jpg?alt=media&token=307bf2ab-41ac-47af-a2c7-275e026f7de2"/>
   <title>Sumeet Sharma</title>
 </head>
 <body ng-app="aboutme" ng-cloak>
   <div ng-controller="homepage">
     <div class="upcontainer" ng-click="goUp()">
-    <img src="./assets/up.svg">
+      <img src="./assets/up.svg">
     </div>
     <div class="text-center" style="margin: 25% auto;" ng-if="show != true">
       <div class="spinner-grow text-success" role="status">
@@ -25,68 +25,84 @@
     <div ng-if="show == true">
       <div class="container-fluid mybkg" >
         <div class="container">
-         <nav class="navbar navbar-expand-lg navbar-light">
-          <a href="" class="navbar-brand">{{info.name.split(' ')[0]}}</a>
-          <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a href="" class="nav-link" ng-click="showProjects()" id="navproject">Projects</a>
-              </li>
-              <li class="nav-item">
-                <a href="{{info.contact.gform}}" target="_blank" class="nav-link">Contact Me</a>
-              </li>
-            </ul>
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="" class="navbar-brand">{{info.name.split(' ')[0]}}</a>
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a href="" class="nav-link" ng-click="showProjects()" id="navproject">Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{info.contact.gform}}" target="_blank" class="nav-link">Contact Me</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="row">
+            <div class="col px-4 my-5 welcome_msg">
+              <p class="m-0">Hi there, I'am</p>
+              <p>{{info.name}}</p>
+              <p>{{info.job}}</p>
+            </div>
           </div>
-        </nav>
-        <div class="row">
-          <div class="col px-4 my-5 welcome_msg">
-            <p class="m-0">Hi there, I'am</p>
-            <p>{{info.name}}</p>
+        </div>
+      </div>
+      <div class="container p-5 my-4">
+        <div class="row" ng-if="projectDiv == false" id="about">
+          <div class="col-md-4 text-center">
+            <img src="{{info.images.profile}}" class="img-fluid profileImg rounded">
+          </div>
+          <div class="col-md-8 aboutme">
             <p>{{info.job}}</p>
+            <p>{{info.discription}}</p>
+            <p style="font-weight: 600;">Languages & Skills</p>
+            <div ng-repeat="item in info.skills">
+              <ul>
+                <li>{{item}}</li>
+              </ul>
+              
+            </div>
           </div>
         </div>
+        <div class="row" ng-if="projectDiv == true" id="proj">
+          <div class="col-sm m-2 text-center customCard" ng-repeat="site in info.site">
+            <div class="col-sm-12" style="height: 156px;">
+              <a href="{{site.link}}" target="_blank"><img class="img-fluid align-middle" src="{{site.logo}}"></a>           
+            </div>
+            <p><a href="{{site.link}}">{{site.name}}</a></p> 
+          </div>
+        </div>
+        
+        
+      </div>
+      <div class="container"  ng-if="projectDiv == true">
+          <div class="row">
+              <div class="row">
+                  <div class="col-sm-12 text-center">
+                    <h3 class="m-2">Animated svgs</h3>
+                  </div>
+            <div class="col-sm-6 text-center customCard" style="background:#fff;" ng-repeat="svg in info.svgs">
+              <img class="img-fluid" ng-src="{{svg}}" alt="once upon a time there was an svg link">
+            </div>
+          </div>
+        </div>
+        
+        
       </div>
     </div>
-    <div class="container p-5 my-4">
-      <div class="row" ng-if="projectDiv == false" id="about">
-        <div class="col-md-4 text-center">
-          <img src="{{info.images.profile}}" class="img-fluid profileImg rounded">
-        </div>
-        <div class="col-md-8 aboutme">
-          <p>{{info.job}}</p>
-          <p>{{info.discription}}</p>
-          <p style="font-weight: 600;">Languages & Skills</p>
-          <div ng-repeat="item in info.skills">
-            <ul>
-              <li>{{item}}</li>
-            </ul>
-           
-          </div>
-        </div>
-      </div>
-      <div class="row" ng-if="projectDiv == true" id="proj">
-        <div class="col-sm m-2 text-center customCard" ng-repeat="site in info.site">
-          <div class="col-sm-12" style="height: 156px;">
-            <a href="{{site.link}}" target="_blank"><img class="img-fluid align-middle" src="{{site.logo}}"></a>           
-          </div>
-          <p><a href="{{site.link}}">{{site.name}}</a></p> 
-        </div>
-      </div>
-    </div>
+    
   </div>
-
-</div>
-
-
-<script type="text/javascript" src="./assets/js/angular.min.js"></script>
-<script type="text/javascript" src="./assets/js/homepageCtrl.js"></script>
-<script type="text/javascript" src="./assets/js/jquery.js"></script>
-<script type="text/javascript" src="./assets/js/popper.js"></script>
-<script type="text/javascript" src="./assets/js/bootstrap.js"></script>
-<script src="./assets/firebase.js"></script>
+  
+  
+  <script type="text/javascript" src="./assets/js/angular.min.js"></script>
+  <script type="text/javascript" src="./assets/js/homepageCtrl.js"></script>
+  <script type="text/javascript" src="./assets/js/jquery.js"></script>
+  <script type="text/javascript" src="./assets/js/popper.js"></script>
+  <script type="text/javascript" src="./assets/js/bootstrap.js"></script>
+  <script src="./assets/firebase.js"></script>
 </body>
 </html>
