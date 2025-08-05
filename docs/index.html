@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,12 +28,209 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>about_me</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    /* Remove default margins and set full height */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Loading container */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      z-index: 9999;
+    }
+
+    /* App logo/icon */
+    .loading-logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 30px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .loading-logo::before {
+      content: "👨‍💻";
+      font-size: 40px;
+    }
+
+    /* Spinner animation */
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #ffffff;
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Loading text */
+    .loading-text {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    /* Progress text */
+    .loading-progress {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* Progress bar */
+    .progress-container {
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: #ffffff;
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Fade out animation */
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    /* Responsive design */
+    @media (max-width: 480px) {
+      .loading-text {
+        font-size: 16px;
+      }
+
+      .loading-progress {
+        font-size: 12px;
+      }
+
+      .progress-container {
+        width: 150px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Loading Screen -->
+  <div id="loading">
+    <div class="loading-logo"></div>
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading About Me</div>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="loading-progress" id="loading-progress">Initializing...</div>
+  </div>
+
+  <script>
+    // Loading progress simulation
+    let progress = 0;
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('loading-progress');
+
+    const loadingSteps = [
+      'Initializing...',
+      'Loading portfolio...',
+      'Preparing content...',
+      'Almost ready...'
+    ];
+
+    let stepIndex = 0;
+
+    function updateProgress() {
+      if (progress < 90) {
+        progress += Math.random() * 15;
+        if (progress > 90) progress = 90;
+
+        progressBar.style.width = progress + '%';
+
+        // Update loading text based on progress
+        const newStepIndex = Math.floor((progress / 90) * (loadingSteps.length - 1));
+        if (newStepIndex !== stepIndex) {
+          stepIndex = newStepIndex;
+          progressText.textContent = loadingSteps[stepIndex];
+        }
+      }
+    }
+
+    // Update progress every 200ms
+    const progressInterval = setInterval(updateProgress, 200);
+
+    // Hide loading screen when Flutter is ready
+    window.addEventListener('flutter-first-frame', function () {
+      clearInterval(progressInterval);
+
+      // Complete the progress bar
+      progressBar.style.width = '100%';
+      progressText.textContent = 'Welcome!';
+
+      // Fade out and remove loading screen
+      setTimeout(() => {
+        const loading = document.querySelector('#loading');
+        loading.classList.add('fade-out');
+
+        setTimeout(() => {
+          loading.remove();
+        }, 500);
+      }, 300);
+    });
+
+    // Handle loading errors
+    window.addEventListener('error', function (e) {
+      clearInterval(progressInterval);
+      progressText.textContent = 'Error loading app. Please refresh.';
+      progressBar.style.background = '#ff6b6b';
+      console.error('Flutter loading error:', e);
+    });
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
+
 </html>
